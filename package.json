@@ -1,0 +1,37 @@
+{
+    "name": "@yaireo/title-tooltip",
+    "version": "1.0.0",
+    "homepage": "https://github.com/yairEO/title-tooltip",
+    "description": "CSSsut",
+    "keywords": [ "tooltip", "title", "attribute" ],
+    "license": "MIT",
+    "_npmUser": {
+        "name": "vsync",
+        "email": "vsync.design@gmail.com"
+    },
+    "browserslist": [
+        ">3% and ie 11",
+        "not dead",
+        "not ie < 11",
+        "not IE_Mob 11",
+        "not op_mini all"
+    ],
+    "scripts": {
+    },
+    "author": {
+        "name": "Yair Even-Or",
+        "email": "vsync.design@gmail.com"
+    },
+    "main": "./title-tooltip.js",
+    "files": [
+        "title-tooltip.css",
+        "title-tooltip.js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yairEO/title-tooltip.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yaireo/title-tooltip/issues"
+    }
+}

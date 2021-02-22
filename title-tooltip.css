@@ -1,0 +1,43 @@
+[title]{
+  cursor: help;
+}
+
+#titleTtip{
+  padding: 6px 11px;
+  border-radius: 6px;
+  color: white;
+  background: black;
+  backdrop-filter: blur(3px);
+  position: fixed;
+  z-index: 9999;
+  left: -999px;
+  top: -999px;
+  box-sizing: border-box;
+  pointer-events: none;
+  transform: scale(.75);
+  transform-origin: 50% top;
+  max-width: 220px;
+  transition: 0s;
+}
+
+#titleTtip::after {
+  content: "";
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: black;
+  border-width: 8px;
+}
+
+/* Only tooltips which are positiond have "style" attribute */
+#titleTtip[style]{
+  opacity: 1;
+  transform: none;
+  transition: opacity .2s, transform .2s, padding .2s;
+}
