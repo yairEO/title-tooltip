@@ -24,7 +24,7 @@ For the positioning of the tooltips, I would recommend the super-lighweight scri
 
 ## Install:
 
-Use from CDN / download from this repo / NPM
+Use from CDN / Download from this repo / [NPM](https://www.npmjs.com/package/@yaireo/title-tooltip)
 
 ```
 npm i @yaireo/title-tooltip -S
