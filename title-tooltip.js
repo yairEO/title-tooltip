@@ -37,7 +37,7 @@ function titleTooltip( opts ){
 
     if( titledElm && titledElm.title ){
       document.addEventListener('mousemove', onMove)
-      hoverTimeout = setTimeout(showTooltip)
+      hoverTimeout = setTimeout(opts.onShow, opts.delay, titledElm, tipElm)
       tipElm.innerHTML = titledElm.title
       // save current title and empty the attribute. restore on mouse-out
       titledElm._entitled = titledElm.title
@@ -61,10 +61,6 @@ function titleTooltip( opts ){
     titledElm = null
   }
 
-  function showTooltip(){
-    reposition(titledElm, tipElm)
-  }
-
   function onMove(e){
     requestAnimationFrame(() => {
       var rect = tipElm.getBoundingClientRect()
@@ -80,7 +76,7 @@ function titleTooltip( opts ){
   }
 
   return {
-    showTooltip, onOver, onOut, tipElm, destroy
+    onOver, onOut, tipElm, destroy
   }
 }
 
