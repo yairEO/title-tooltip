@@ -1,14 +1,14 @@
 {
     "name": "@yaireo/title-tooltip",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "homepage": "https://github.com/yairEO/title-tooltip",
     "description": "CSSsut",
-    "keywords": [ "tooltip", "title", "attribute" ],
+    "keywords": [
+        "tooltip",
+        "title",
+        "attribute"
+    ],
     "license": "MIT",
-    "_npmUser": {
-        "name": "vsync",
-        "email": "vsync.design@gmail.com"
-    },
     "browserslist": [
         ">3% and ie 11",
         "not dead",
@@ -16,8 +16,7 @@
         "not IE_Mob 11",
         "not op_mini all"
     ],
-    "scripts": {
-    },
+    "scripts": {},
     "author": {
         "name": "Yair Even-Or",
         "email": "vsync.design@gmail.com"
