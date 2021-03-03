@@ -1,22 +1,23 @@
-[title]{
-  cursor: help;
-}
-
 #titleTtip{
   --radius: 6px;
+  --trans-duration: .2s;
   max-width: 220px;
-  padding: 6px 11px;
-  border-radius: var(--radius);
-  color: white;
-  background: black;
-  backdrop-filter: blur(3px);
   position: fixed;
   z-index: max;
   box-sizing: border-box;
   pointer-events: none;
+  opacity: 0;
+  transition: 0s;
+}
+
+#titleTtip .titleTtip__text{
+  padding: 6px 11px;
+  border-radius: var(--radius);
+  color: white;
   transform: scale(.75);
   transform-origin: 50% top;
-  transition: 0s;
+  background: black;
+  backdrop-filter: blur(3px);
 }
 
 #titleTtip::after {
@@ -40,8 +41,12 @@
 }
 
 /* Only tooltips which are positiond have "style" attribute */
-#titleTtip[style]{
-  opacity: 1;
+#titleTtip[style~="top:"] > *{
   transform: none;
-  transition: opacity .2s, transform .2s, padding .2s;
+  transition: var(--trans-duration);
+}
+
+#titleTtip[style~="top:"]{
+  opacity: 1;
+  transition: opacity var(--trans-duration);
 }

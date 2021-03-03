@@ -1,3 +1,7 @@
+/**
+ * By Yair Even Or
+ * https://github.com/yairEO/title-tooltip
+ */
 ;(function(root, factory){
   var define = define || {};
   if( typeof define === 'function' && define.amd )
@@ -37,8 +41,11 @@ function titleTooltip( opts ){
 
     if( titledElm && titledElm.title ){
       document.addEventListener('mousemove', onMove)
-      hoverTimeout = setTimeout(opts.onShow, opts.delay, titledElm, tipElm)
-      tipElm.innerHTML = titledElm.title
+      hoverTimeout = setTimeout(function(){
+        opts.onShow(titledElm, tipElm)
+        setMousePos(e)
+      }, opts.delay)
+      tipElm.innerHTML = "<div class='"+ opts.id + "__text" +"'>" + titledElm.title + "</div>"
       // save current title and empty the attribute. restore on mouse-out
       titledElm._entitled = titledElm.title
       titledElm.title = ''
@@ -62,10 +69,12 @@ function titleTooltip( opts ){
   }
 
   function onMove(e){
-    requestAnimationFrame(() => {
-      var rect = tipElm.getBoundingClientRect()
-      tipElm.style.setProperty('--mouse-pos', e.clientX - rect.left)
-    })
+    requestAnimationFrame(function(){ setMousePos(e) })
+  }
+
+  function setMousePos(e){
+    var rect = tipElm.getBoundingClientRect()
+    tipElm.style.setProperty('--mouse-pos', e.clientX - rect.left)
   }
 
   function destroy(){
