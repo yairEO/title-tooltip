@@ -33,18 +33,27 @@ function titleTooltip( opts ){
   // event handlers
   function onOver(e){
     titledElm = e.target.closest('[title]')
+    document.removeEventListener('mousemove', onMove)
 
     if( titledElm && titledElm.title ){
-      showTooltip()
+      document.addEventListener('mousemove', onMove)
+      hoverTimeout = setTimeout(showTooltip)
+      tipElm.innerHTML = titledElm.title
+      // save current title and empty the attribute. restore on mouse-out
+      titledElm._entitled = titledElm.title
+      titledElm.title = ''
     }
     else
       onOut()
   }
 
+  /**
+   * On mouse out, revert back everything as it was beofre mouse over
+   */
   function onOut(e){
     clearTimeout(hoverTimeout)
+    document.removeEventListener('mousemove', onMove)
     tipElm.removeAttribute('style')
-    tipElm.innerHTML = ''
 
     if( titledElm && titledElm._entitled )
       titledElm.title = titledElm._entitled
@@ -53,18 +62,20 @@ function titleTooltip( opts ){
   }
 
   function showTooltip(){
-    tipElm.innerHTML = titledElm.title
+    reposition(titledElm, tipElm)
+  }
 
-    hoverTimeout = setTimeout(opts.onShow, opts.delay, titledElm, tipElm)
-
-    // save current title and empty the attribute. restore on mouse-out
-    titledElm._entitled = titledElm.title
-    titledElm.title = ''
+  function onMove(e){
+    requestAnimationFrame(() => {
+      var rect = tipElm.getBoundingClientRect()
+      tipElm.style.setProperty('--mouse-pos', e.clientX - rect.left)
+    })
   }
 
   function destroy(){
     document.removeEventListener('mouseover', onOver)
     document.removeEventListener('mouseout', onOut)
+    document.removeEventListener('mousemove', onMove)
     document.body.removeChild(tipElm)
   }
 

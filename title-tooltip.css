@@ -3,36 +3,40 @@
 }
 
 #titleTtip{
+  --radius: 6px;
+  max-width: 220px;
   padding: 6px 11px;
-  border-radius: 6px;
+  border-radius: var(--radius);
   color: white;
   background: black;
   backdrop-filter: blur(3px);
   position: fixed;
-  z-index: 9999;
-  left: -999px;
-  top: -999px;
+  z-index: max;
   box-sizing: border-box;
   pointer-events: none;
   transform: scale(.75);
   transform-origin: 50% top;
-  max-width: 220px;
   transition: 0s;
 }
 
 #titleTtip::after {
+  --size: 8px;
   content: "";
   bottom: 100%;
-  left: 0;
+  /*
+    1. limit minimum left value to the radius of the tooltip so it starts just when thr radius curves
+    2. place the arrow exactly where the mouse pointer is
+    3. limit the right position (maximum left) to fit exactly
+  */
+  left: Clamp(var(--radius)/2, var(--mouse-pos, 0) * 1px - var(--size)/2, 100% - var(--size)*2 - var(--radius)/2 - 1px);
   right: 0;
-  margin: auto;
   border: solid transparent;
   height: 0;
   width: 0;
   position: absolute;
   pointer-events: none;
   border-bottom-color: black;
-  border-width: 8px;
+  border-width: var(--size);
 }
 
 /* Only tooltips which are positiond have "style" attribute */
