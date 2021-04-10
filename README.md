@@ -1,11 +1,12 @@
+<p align="center">
+  <a href='https://jsbin.com/safedoq/5/edit?html,css,js,output'>
+    <img src="./demo.png?sanitize=true" alt="title-tooltip script demo"/>
+  </a>
+<p>
+<h3 align="center">Converts title attributes into tooltips</h3>
 <h1 align="center">
   <a href='https://jsbin.com/safedoq/5/edit?html,css,js,output'>Title Tooltip</a>
 </h1>
-<h3 align="center">Converts title attributes into tooltips</h3>
-
-<h3 align="center">
-  👉 <a href='https://jsbin.com/safedoq/5/edit?html,css,js,output' target='_blank'>Demo</a> 👈
-</h3>
 
 ---
 
