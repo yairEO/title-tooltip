@@ -23,7 +23,7 @@ function titleTooltip( opts ){
   // do not continue if already exists
   if( opts.id in window ) return
 
-  var hoverTimeout, titledElm;
+  var hoverTimeout, titledElm, mousePos = {};
 
   // bind global event listeners
   document.addEventListener('mouseover', onOver)
@@ -41,7 +41,7 @@ function titleTooltip( opts ){
 
     if( titledElm && titledElm.title ){
       document.addEventListener('mousemove', onMove)
-      hoverTimeout = setTimeout(function(){
+      hoverTimeout = setTimeout(() => {
         opts.onShow(titledElm, tipElm)
         setMousePos(e)
       }, opts.delay)
@@ -69,12 +69,13 @@ function titleTooltip( opts ){
   }
 
   function onMove(e){
-    requestAnimationFrame(function(){ setMousePos(e) })
+    mousePos.x = e.clientX
+    requestAnimationFrame(() => setMousePos(e) )
   }
 
-  function setMousePos(e){
+  function setMousePos(){
     var rect = tipElm.getBoundingClientRect()
-    tipElm.style.setProperty('--mouse-pos', e.clientX - rect.left)
+    tipElm.style.setProperty('--mouse-pos', mousePos.x - rect.left)
   }
 
   function destroy(){
