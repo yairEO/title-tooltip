@@ -12,7 +12,7 @@ If you want to have custom tooltips and all you have now are `title` attribute, 
 anything in your markup, then this solution will automatically show ustom tooltips instead of your titles
 and all you need to do is style them (or use the default style here)
 
-For the positioning of the tooltips, I would recommend the super-lighweight script (`< 1kb`) [Nanopop](https://github.com/Simonwep/nanopop)
+For the positioning of the tooltips, I would recommend using my [super-lighweight script](https://github.com/yairEO/position)
 
 
 ## Features:
@@ -49,7 +49,15 @@ Finally, execute the command to automatically transform the *titles* to tooltips
 // using Nanopop lib for positioning
 titleTooltip({
   onShow: function(reference, popper){
-    NanoPop.reposition(reference, popper,{position: 'bottom-middle'})
+    // ".default" is only needed when the script is loaded as a <script> tag and not as an ES2015 module
+    position.default({
+      target    : popper,
+      useRaf    : false,
+      ref       : reference,
+      offset    : [0, 5],
+      placement : "center below",
+      track     : {scroll:true}
+    })
   }
 })
 ```
