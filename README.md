@@ -29,6 +29,12 @@ Use from [CDN](https://unpkg.com/@yaireo/title-tooltip) / Download from this rep
 npm i @yaireo/title-tooltip -S
 ```
 
+---
+🧐 This script should be accompanied by a **DOM positioniong** script. I intentionally *did not* couple one because you might be already using one
+in your project, or simply do not want one coupled. I recommend using another lib of mine for that *(it's also used in the demo page and below code)*:
+https://github.com/yairEO/position
+
+---
 ## Usage:
 
 Import CSS file via JS
@@ -56,7 +62,6 @@ titleTooltip({
       ref       : reference,
       offset    : [0, 5],
       placement : "center below",
-      track     : {scroll:true}
     })
   }
 })
