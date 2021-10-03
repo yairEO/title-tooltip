@@ -23,7 +23,7 @@ For the positioning of the tooltips, I would recommend using my [super-lighweigh
 
 ## Install:
 
-Use from CDN / Download from this repo / [NPM](https://www.npmjs.com/package/@yaireo/title-tooltip)
+Use from [CDN](https://unpkg.com/@yaireo/title-tooltip) / Download from this repo / [NPM](https://www.npmjs.com/package/@yaireo/title-tooltip)
 
 ```
 npm i @yaireo/title-tooltip -S
@@ -46,7 +46,7 @@ Import default CSS
 Finally, execute the command to automatically transform the *titles* to tooltips:
 
 ```js
-// using Nanopop lib for positioning
+// using "@yaireo/position" lib for positioning
 titleTooltip({
   onShow: function(reference, popper){
     // ".default" is only needed when the script is loaded as a <script> tag and not as an ES2015 module
