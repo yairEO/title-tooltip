@@ -17,7 +17,8 @@ function titleTooltip( opts ){
   opts = Object.assign({
     delay: 400,
     id: 'titleTtip',
-    onShow(){}
+    onShow(){},
+    onHide(){}
   }, opts||{})
 
   // do not continue if already exists
@@ -43,6 +44,7 @@ function titleTooltip( opts ){
       document.addEventListener('mousemove', onMove)
       hoverTimeout = setTimeout(() => {
         opts.onShow(titledElm, tipElm)
+        tipElm.setAttribute('data-over', true)
         setMousePos(e)
       }, opts.delay)
       tipElm.innerHTML = "<div class='"+ opts.id + "__text" +"'>" + titledElm.title + "</div>"
@@ -61,10 +63,12 @@ function titleTooltip( opts ){
     clearTimeout(hoverTimeout)
     document.removeEventListener('mousemove', onMove)
     tipElm.removeAttribute('style')
+    tipElm.removeAttribute('data-over')
 
     if( titledElm && titledElm._entitled )
       titledElm.title = titledElm._entitled
 
+    opts.onHide(titledElm, tipElm)
     titledElm = null
   }
 
