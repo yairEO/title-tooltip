@@ -23,7 +23,7 @@
 #titleTtip::after {
   --size: 8px;
   content: "";
-  bottom: 100%;
+  bottom: calc(100% - 1px); /* very odd 1px gap */
   /*
     1. limit minimum left value to the radius of the tooltip so it starts just when thr radius curves
     2. place the arrow exactly where the mouse pointer is
@@ -40,13 +40,24 @@
   border-width: var(--size);
 }
 
+[data-over]{
+  --x: calc(var(--pos-left) + var(--window-scroll-x));
+  --y: calc(var(--pos-top) + var(--window-scroll-y));
+  position: absolute;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  transform: translate(calc(var(--x) * 1px),
+                       calc(var(--y) * 1px));
+}
+
 /* Only tooltips which are positiond have "style" attribute */
-#titleTtip[style~="top:"] > *{
+#titleTtip[data-over] > *{
   transform: none;
   transition: var(--trans-duration);
 }
 
-#titleTtip[style~="top:"]{
+#titleTtip[data-over]{
   opacity: 1;
   transition: opacity var(--trans-duration);
 }
