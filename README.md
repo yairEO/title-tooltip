@@ -61,6 +61,7 @@ titleTooltip({
       useRaf    : false,
       ref       : reference,
       offset    : [0, 5],
+      delay     : 0, // default is 400ms
       placement : "center below",
     })
   }
